@@ -25,7 +25,7 @@ contract ConcertTicket is Initializable, ERC721Upgradeable, OwnableUpgradeable {
      * @param seatNumber The seat number in that row (computed sequentially).
      * @param category The seating category (one of A, B, C, D, or E).
      * @param used Boolean flag indicating whether the ticket has been used.
-     * @param originalOwner The address that initially purchased (minted) the ticket.
+     * @param originalOwner The address that own the ticket
      */
     struct Ticket {
         uint256 row;
@@ -76,22 +76,12 @@ contract ConcertTicket is Initializable, ERC721Upgradeable, OwnableUpgradeable {
     // -------------------------------
     // EVENTS
     // -------------------------------
-    event TicketMinted(
-        address indexed to,
-        uint256 indexed tokenId,
-        uint256 row,
-        uint256 seatNumber,
-        CAT category
-    );
+    event TicketMinted(address indexed to, uint256 indexed tokenId, uint256 row, uint256 seatNumber, CAT category);
     event TicketUsed(uint256 indexed tokenId);
     event MarketplaceUpdated(address indexed oldMarketplace, address indexed newMarketplace);
     event TicketSaleContractUpdated(address indexed oldTicketSale, address indexed newTicketSale);
     event EventDetailsUpdated(uint256 indexed tokenId, string oldEventDetails, string newEventDetails);
-    event SeatingDetailsUpdated(
-        CAT category,
-        uint256 available,
-        uint256 price
-    );
+    event SeatingDetailsUpdated(CAT category, uint256 available, uint256 price);
 
     // -------------------------------
     // INITIALIZER

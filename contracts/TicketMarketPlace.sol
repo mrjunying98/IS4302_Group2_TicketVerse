@@ -52,41 +52,11 @@ contract TicketMarketPlace is Initializable, OwnableUpgradeable {
     // EVENTS
     // -------------------------------
 
-    /**
-     * @notice Emitted when a ticket is listed for resale.
-     * @param ticketId The ID of the ticket.
-     * @param seller The address of the ticket owner.
-     * @param salePrice The sale price set by the seller.
-     */
+
     event TicketListed(uint256 indexed ticketId, address indexed seller, uint256 salePrice);
-
-    /**
-     * @notice Emitted when a ticket listing is cancelled.
-     * @param ticketId The ID of the ticket.
-     * @param seller The address of the seller.
-     */
     event ListingCancelled(uint256 indexed ticketId, address indexed seller);
-
-    /**
-     * @notice Emitted when a ticket is sold.
-     * @param ticketId The ID of the ticket.
-     * @param seller The address of the seller.
-     * @param buyer The address of the buyer.
-     * @param salePrice The sale price paid.
-     */
     event TicketSold(uint256 indexed ticketId, address indexed seller, address indexed buyer, uint256 salePrice);
-
-    /**
-     * @notice Emitted when the count of active listings is updated.
-     * @param totalActive The new total count of active listings.
-     */
     event ActiveListingsUpdated(uint256 totalActive);
-
-    /**
-     * @notice Emitted when the original owner of a ticket is updated.
-     * @param ticketId The ID of the ticket.
-     * @param newOwner The new original owner of the ticket.
-     */
     event OriginalOwnerUpdated(uint256 indexed ticketId, address indexed newOwner);
 
     // -------------------------------

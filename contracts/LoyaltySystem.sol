@@ -31,14 +31,8 @@ contract LoyaltySystem is Ownable {
     // ======================================================
     // EVENTS
     // ======================================================
-
-    /// @notice Emitted when points are added to a user's account.
     event PointsAdded(address indexed user, uint256 amount);
-
-    /// @notice Emitted when points are deducted from a user's account.
     event PointsDeducted(address indexed user, uint256 amount);
-
-    /// @notice Emitted when an operator is authorized or deauthorized.
     event AuthorizedOperatorSet(address indexed operator, bool authorized);
 
     // ======================================================

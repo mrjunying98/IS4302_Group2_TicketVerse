@@ -88,7 +88,7 @@ contract TicketLotterySale is Ownable, VRFConsumerBaseV2 {
     
     // Accumulated fee pool from registrations and purchases.
     uint256 public feePool;
-    // Fee rate in basis points (FEE_RATE_BP = 100 means 1% fee).
+    // Fee rate in basis points (1% fee).
     uint256 public constant FEE_RATE_BP = 100;
     
     // Addresses for event organiser, deployer, and marketplace.
@@ -502,11 +502,11 @@ contract TicketLotterySale is Ownable, VRFConsumerBaseV2 {
     }
     
     // -------------------------------------------------
-    // WITHDRAW REGISTRATION FUNDS
+    // WITHDRAW REGISTRATION 
     // -------------------------------------------------
     
     /**
-     * @notice Allows non-winning registrants to withdraw their registration funds.
+     * @notice Allows registrants to withdraw their registration.
      * Withdrawals are allowed only during the registration period.
      * @param category The seating category for which the user registered.
      */
@@ -610,6 +610,11 @@ contract TicketLotterySale is Ownable, VRFConsumerBaseV2 {
         uint256 expiredCount = 0;
         for (uint256 i = 0; i < winners.length; ) {
             if (!winners[i].claimed) {
+                
+                uint256 refundAmount = winners[i].ticketPrice;
+                // Refund the ticket price to the expired winner.
+                payable(winners[i].winner).transfer(refundAmount);
+
                 expiredCount++;
                 // Remove expired winner entry by swapping with the last element and popping.
                 winners[i] = winners[winners.length - 1];
