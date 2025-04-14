@@ -39,8 +39,3 @@ TicketVerse features a modular design where each component interacts seamlessly:
 - npm 
 - Hardhat 
 
-### Installation
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-username/TicketVerse-Contracts.git
